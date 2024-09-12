@@ -23,7 +23,11 @@
 {{ template "document-body" . }}
 <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
 <script>
-  const player = new Plyr('#player');
+document.addEventListener('DOMContentLoaded', () => {
+    const player = new Plyr('#player', {
+        // Các tùy chọn khác nếu cần
+    });
+});    
 </script>
 </body>
 </html>
