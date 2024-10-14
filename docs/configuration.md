@@ -138,6 +138,10 @@ A number between 1 and 65,535, so long as that port isn't already used by anythi
 #### `base-url`
 The base URL that Glance is hosted under. No need to specify this unless you're using a reverse proxy and are hosting Glance under a directory. If that's the case then you can set this value to `/glance` or whatever the directory is called. Note that the forward slash (`/`) in the beginning is required unless you specify the full domain and path.
 
+> [!IMPORTANT]
+> You need to strip the `base-url` prefix before forwarding the request to the Glance server.
+> In Caddy you can do this using [`handle_path`](https://caddyserver.com/docs/caddyfile/directives/handle_path) or [`uri strip_prefix`](https://caddyserver.com/docs/caddyfile/directives/uri).
+
 #### `assets-path`
 The path to a directory that will be served by the server under the `/assets/` path. This is handy for widgets like the Monitor where you have to specify an icon URL and you want to self host all the icons rather than pointing to an external source.
 
@@ -848,7 +852,7 @@ Either a value from the table below or a URL to a custom search engine. Use `{QU
 ##### `new-tab`
 When set to `true`, swaps the shortcuts for showing results in the same or new tab, defaulting to showing results in a new tab.
 
-##### `new-tab`
+##### `autofocus`
 When set to `true`, automatically focuses the search input on page load.
 
 ##### `bangs`
